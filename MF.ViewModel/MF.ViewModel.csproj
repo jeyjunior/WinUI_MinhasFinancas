@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>MF.ViewModel</RootNamespace>
+    <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
+    <UseWinUI>true</UseWinUI>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.7175" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.8.251106002" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MF.Application\MF.Application.csproj" />
+    <ProjectReference Include="..\MF.Domain\MF.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+	  <Reference Include="JJ.Net.Core">
+		  <HintPath>..\MF.Domain\DLL\JJ.Net.Core.dll</HintPath>
+	  </Reference>
+	  <Reference Include="JJ.Net.WinUI3_CrossData">
+	    <HintPath>..\MF.Domain\DLL\JJ.Net.WinUI3_CrossData.dll</HintPath>
+	  </Reference>
+  </ItemGroup>
+  
+</Project>
