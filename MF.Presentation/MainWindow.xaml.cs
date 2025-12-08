@@ -1,3 +1,4 @@
+using MF.Presentation.Mensagem;
 using MF.ViewModel;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
@@ -17,13 +18,12 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using WinRT.Interop;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace MF.Presentation
 {
     public sealed partial class MainWindow : Window
     {
+        public static MainWindow Instance { get; private set; }
+
         private const int Largura = 800;
         private const int Altura = 800;
         private AppWindow m_AppWindow;
@@ -31,9 +31,12 @@ namespace MF.Presentation
         public MainWindow()
         {
             InitializeComponent();
-            DefinirPadraoUI();
 
-            Configuracao.Iniciar();
+            Instance = this;
+            Notificacao.RegisterContainer(gNotificacao);
+
+            DefinirPadraoUI();
+            ConfiguracaoMinhasFinancas.Iniciar();
         }
 
         private void DefinirPadraoUI()

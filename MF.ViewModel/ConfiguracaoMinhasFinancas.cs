@@ -15,7 +15,7 @@ using JJ.Net.WinUI3_CrossData.Extensao;
 
 namespace MF.ViewModel
 {
-    public static class Configuracao
+    public static class ConfiguracaoMinhasFinancas
     {
         public static void Iniciar()
         {

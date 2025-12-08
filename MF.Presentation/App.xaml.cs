@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using JJ.Net.WinUI3_CrossData;
 using MF.ViewModel;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -44,15 +45,13 @@ namespace MF.Presentation
         /// <param name="args">Details about the launch request and process.</param>
         protected async override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
-            // Inicializa a configuração do banco de dados
-            var sucesso = await JJ.Net.WinUI3_CrossData.Configuracao.Instancia.IniciarBaseAsync();
+            var sucesso = await Configuracao.Instancia.IniciarBaseAsync();
 
             if (!sucesso)
                 return;
 
-            if (JJ.Net.WinUI3_CrossData.Configuracao.Instancia.ArquivoGerado)
+            if (Configuracao.Instancia.ArquivoGerado)
             {
-
             }
 
             Bootstrap.Iniciar();

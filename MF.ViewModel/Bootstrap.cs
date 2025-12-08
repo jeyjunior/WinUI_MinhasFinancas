@@ -1,20 +1,21 @@
-﻿using JJ.Net.WinUI3_CrossData.Data;
-using JJ.Net.WinUI3_CrossData.InfraData;
-using JJ.Net.WinUI3_CrossData.Interfaces;
-using MF.Domain;
-using MF.Domain.Entidades;
-using MF.Domain.Interfaces;
-using MF.InfraData.Repository;
-using Microsoft.Data.SqlClient;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.ConstrainedExecution;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using MF.Domain;
+using MF.Domain.Entidades;
+using MF.Domain.Interfaces;
+using MF.InfraData.Repository;
+using JJ.Net.WinUI3_CrossData.Data;
+using JJ.Net.WinUI3_CrossData.Enumerador;
+using JJ.Net.WinUI3_CrossData.InfraData;
+using JJ.Net.WinUI3_CrossData.Interfaces;
 
 namespace MF.ViewModel
 {
@@ -52,6 +53,5 @@ namespace MF.ViewModel
             services.AddSingleton<IEntidadeRepository, EntidadeRepository>();
             services.AddSingleton<ITransacaoFinanceiraRepository, TransacaoFinanceiraRepository>();
         }
-
     }
 }
