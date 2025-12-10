@@ -16,6 +16,8 @@ using JJ.Net.WinUI3_CrossData.Data;
 using JJ.Net.WinUI3_CrossData.Enumerador;
 using JJ.Net.WinUI3_CrossData.InfraData;
 using JJ.Net.WinUI3_CrossData.Interfaces;
+using MF.Domain.Interfaces.ViewModel;
+using MF.ViewModel.ViewModel;
 
 namespace MF.ViewModel
 {
@@ -34,6 +36,7 @@ namespace MF.ViewModel
                         services.AddScoped<IUnitOfWork>(provider => new UnitOfWork(JJ.Net.WinUI3_CrossData.Enumerador.TipoBancoDados.SQLServer));
 
                         RegistrarServicos(services);
+                        RegistrarViewModels(services);
                     })
                     .Build();
 
@@ -52,6 +55,10 @@ namespace MF.ViewModel
             services.AddSingleton<IFormaPagamentoRepository, FormaPagamentoRepository>();
             services.AddSingleton<IEntidadeRepository, EntidadeRepository>();
             services.AddSingleton<ITransacaoFinanceiraRepository, TransacaoFinanceiraRepository>();
+        }
+        private static void RegistrarViewModels(IServiceCollection services)
+        {
+            services.AddSingleton<IFormaPagamentoViewModel, FormaPagamentoViewModel>();
         }
     }
 }

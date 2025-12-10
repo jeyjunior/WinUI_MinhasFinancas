@@ -55,7 +55,7 @@
 
         <Frame Grid.Column="1" Grid.Row="1" Height="48" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Background="{StaticResource Cinza10}">
             <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Spacing="8">
-                <Button Style="{StaticResource DefaultButtonStyle}" Width="38" Height="38"/>
+                <Button x:Name="btnFormaPagamento" Click="btnFormaPagamento_Click" Style="{StaticResource DefaultButtonStyle}" Width="38" Height="38"/>
                 <Button Style="{StaticResource DefaultButtonStyle}" Width="38" Height="38"/>
                 <Button Style="{StaticResource DefaultButtonStyle}" Width="38" Height="38"/>
                 <Button Style="{StaticResource DefaultButtonStyle}" Width="38" Height="38"/>

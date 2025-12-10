@@ -14,7 +14,9 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Componentes\NotificacaoUserControl.xaml" />
+    <None Remove="Styles\DataGridStyles.xaml" />
     <None Remove="Themes\Colors.xaml" />
+    <None Remove="Views\FormaPagamentoPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -61,10 +63,17 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Styles\" />
+    <Page Update="Views\FormaPagamentoPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Themes\Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Styles\DataGridStyles.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

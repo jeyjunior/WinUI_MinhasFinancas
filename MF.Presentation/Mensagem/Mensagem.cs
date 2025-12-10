@@ -13,20 +13,31 @@ namespace MF.Presentation.Mensagem
     {
         public static async Task<eMensagemResultado> ExibirAsync(this XamlRoot xamlRoot, string mensagem, eMensagem tipoMensagem)
         {
-            var (titulo, botoes) = ObterConfiguracaoMensagem(tipoMensagem);
+            eMensagemResultado mensagemResultado = eMensagemResultado.Nenhuma;
 
-            var contentDialog = new ContentDialog
+            try
             {
-                Title = titulo,
-                Content = mensagem,
-                XamlRoot = xamlRoot
-            };
+                var (titulo, botoes) = ObterConfiguracaoMensagem(tipoMensagem);
 
-            ConfigurarBotoes(contentDialog, botoes);
+                var contentDialog = new ContentDialog
+                {
+                    Title = titulo,
+                    Content = mensagem,
+                    XamlRoot = xamlRoot
+                };
 
-            var resultado = await contentDialog.ShowAsync();
+                ConfigurarBotoes(contentDialog, botoes);
 
-            return TratarResultado(resultado, tipoMensagem);
+                var resultado = await contentDialog.ShowAsync();
+
+                mensagemResultado = TratarResultado(resultado, tipoMensagem);
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return mensagemResultado;
         }
         public static async Task<bool> ExibirConfirmacaoAsync(this XamlRoot xamlRoot, string mensagem)
         {

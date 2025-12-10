@@ -21,13 +21,20 @@ namespace MF.Presentation.Mensagem
 
         public static void Exibir(NotificacaoRequest request)
         {
-            if (_container == null)
-                return;
+            try
+            {
+                if (_container == null)
+                    return;
 
-            var notificacao = new NotificacaoUserControl();
-            notificacao.DefinirTipoNotificacao(request.Mensagem, request.TipoNotificacao);
+                var notificacao = new NotificacaoUserControl();
+                notificacao.DefinirTipoNotificacao(request.Mensagem, request.TipoNotificacao);
 
-            AdicionarNotificacao(notificacao);
+                AdicionarNotificacao(notificacao);
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private static void AdicionarNotificacao(NotificacaoUserControl notificacao)

@@ -1,4 +1,5 @@
 using MF.Presentation.Mensagem;
+using MF.Presentation.Views;
 using MF.ViewModel;
 using Microsoft.UI;
 using Microsoft.UI.Windowing;
@@ -36,14 +37,16 @@ namespace MF.Presentation
             Notificacao.RegisterContainer(gNotificacao);
 
             DefinirPadraoUI();
+            SetWindowMinSize();
+
             ConfiguracaoMinhasFinancas.Iniciar();
         }
 
         private void DefinirPadraoUI()
         {
             m_AppWindow = ObterAppWindowAtual();
-            m_AppWindow.Title = "FlowCheck";
-            m_AppWindow.SetIcon("Assets/flowcheck_icone_24.ico");
+            m_AppWindow.Title = "Minhas Finanças";
+            m_AppWindow.SetIcon("Assets/minhas_financas.ico");
 
             DefinirTamanhoUI();
             CentralizarUI();
@@ -85,6 +88,27 @@ namespace MF.Presentation
             IntPtr hWnd = WindowNative.GetWindowHandle(this);
             WindowId wndId = Win32Interop.GetWindowIdFromWindow(hWnd);
             return AppWindow.GetFromWindowId(wndId);
+        }
+        private void SetWindowMinSize()
+        {
+            var hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WindowId windowId = Win32Interop.GetWindowIdFromWindow(hWnd);
+
+            AppWindow appWindow = AppWindow.GetFromWindowId(windowId);
+            if (appWindow == null)
+                return;
+
+            var presenter = appWindow.Presenter as OverlappedPresenter;
+            if (presenter == null)
+                return;
+
+            presenter.PreferredMinimumHeight = Altura;
+            presenter.PreferredMinimumWidth = Largura;
+        }
+
+        private void btnFormaPagamento_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(FormaPagamentoPage));
         }
     }
 }

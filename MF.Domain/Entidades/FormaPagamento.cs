@@ -1,4 +1,5 @@
 ﻿using JJ.Net.WinUI3_CrossData.Atributo;
+using Microsoft.UI.Xaml.Media;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,5 +30,16 @@ namespace MF.Domain.Entidades
 
         [Relacionamento("Usuario", "PK_Usuario")]
         public int? FK_Usuario { get; set; }
+    }
+
+    public class FormaPagamentoGrid
+    {
+        public int PK_FormaPagamento { get; set; }
+        public string Ativo { get; set; }
+        public SolidColorBrush AtivoCor { get; set; }
+        public string FormaPagamento { get; set; }
+        public string TipoTransacao { get; set; }
+        public string TipoTransacaoIcone { get; set; }
+        public SolidColorBrush TipoTransacaoCor { get; set; }
     }
 }
