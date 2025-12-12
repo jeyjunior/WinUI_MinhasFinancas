@@ -69,6 +69,9 @@ namespace MF.Presentation.Views
 
         }
 
+        private void btnOrdenarFormaPagamento_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

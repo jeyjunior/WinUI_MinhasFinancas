@@ -71,7 +71,7 @@ namespace MF.ViewModel.ViewModel
                 {
                     PK_FormaPagamento = item.PK_FormaPagamento,
                     Ativo = item.Ativo ? "Sim" : "Não",
-                    AtivoCor = item.Ativo ? eCor.Verde2.ObterCor() : eCor.Laranja2.ObterCor(),
+                    AtivoCor = item.Ativo ? eCor.Verde2.ObterCor() : eCor.Laranja4.ObterCor(),
                     FormaPagamento = item.Nome,
                     TipoTransacao = _tipoTransacaoRepository.ObterCodigoTipoTransacao(item.FK_TipoTransacao),
                     TipoTransacaoCor = _tipoTransacaoRepository.ObterPadraoCorTipoTransacao(item.FK_TipoTransacao),

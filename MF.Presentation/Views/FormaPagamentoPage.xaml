@@ -9,107 +9,200 @@
     Loading="Page_Loading"
     mc:Ignorable="d">
 
-    <Grid >
+    <Grid Background="{StaticResource Cinza7}">
         <Grid.RowDefinitions>
             <RowDefinition Height="48"/>
-            <RowDefinition Height="38"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Grid.Row="0" 
-                   Foreground="{StaticResource Cinza3}"
-                   FontSize="12"
-                   Padding="8,8,0,0"
-                   FontWeight="Bold"
-                   Text="Forma de pagamento" 
-                   HorizontalAlignment="Center" 
-                   VerticalAlignment="Top"/>
+        <Grid Grid.Row="0" Background="{StaticResource Cinza11}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
+            <TextBlock Grid.Column="0" 
+                       Foreground="{StaticResource Cinza3}"
+                       FontSize="12"
+                       Padding="12,0,0,0"
+                       FontWeight="Bold"
+                       Text="Forma de pagamento" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Center"/>
 
-        <Frame Grid.Row="1" Background="{StaticResource Cinza9}">
-            <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0" Orientation="Horizontal" Spacing="4">
-                <Button x:Name="btnDeletar" Height="28" Width="28" Padding="0" Click="btnDeletar_Click" IsEnabled="{Binding HabilitarBotaoEditarExcluir}">
-                    <FontIcon Glyph="&#xE74D;" FontSize="14"/>
-                </Button>
-                <Button x:Name="btnEditar" Height="28" Width="28" Padding="0" Margin="0" Click="btnEditar_Click" IsEnabled="{Binding HabilitarBotaoEditarExcluir}">
-                    <FontIcon Glyph="&#xE70F;" FontSize="14"/>
-                </Button>
-                <Button x:Name="btnAdicionar" Height="28" Width="28" Padding="0" Margin="0" Style="{StaticResource AccentButtonStyle}" Click="btnAdicionar_Click" >
-                    <FontIcon Glyph="&#xE710;" FontSize="14"/>
-                </Button>
-            </StackPanel>
-        </Frame>
+            <Frame Grid.Column="1" >
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,8,0" Orientation="Horizontal" Spacing="4">
+                    <Button x:Name="btnDeletar" Height="28" Width="28" Padding="0" Click="btnDeletar_Click" IsEnabled="{Binding HabilitarBotaoEditarExcluir}">
+                        <FontIcon Glyph="&#xE74D;" FontSize="14"/>
+                    </Button>
+                    <Button x:Name="btnEditar" Height="28" Width="28" Padding="0" Margin="0" Click="btnEditar_Click" IsEnabled="{Binding HabilitarBotaoEditarExcluir}">
+                        <FontIcon Glyph="&#xE70F;" FontSize="14"/>
+                    </Button>
+                    <Button x:Name="btnAdicionar" Height="28" Width="28" Padding="0" Margin="0" Style="{StaticResource AccentButtonStyle}" Click="btnAdicionar_Click" >
+                        <FontIcon Glyph="&#xE710;" FontSize="14"/>
+                    </Button>
+                </StackPanel>
+            </Frame>
+        </Grid>
         
-        <Grid Grid.Row="2">
+        <Grid Grid.Row="2" RowSpacing="2" Margin="0,2,0,0" Padding="8" Background="{StaticResource Cinza9}">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="48"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <!-- Cabeçalho -->
-            <Grid  Grid.Row="0" Style="{StaticResource GridCabecalho}">
+            <Grid  Grid.Row="0" Background="{StaticResource Cinza9}" ColumnSpacing="2" CornerRadius="4,4,0,0">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0"/>
-                    <ColumnDefinition Width="12"/>
-                    <ColumnDefinition Width="48"/>
+                    <ColumnDefinition Width="90" MinWidth="90"/>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="140" MinWidth="140"/>
                     <ColumnDefinition Width="48"/>
                 </Grid.ColumnDefinitions>
 
-                <Border Grid.Column="1" Style="{StaticResource BorderCelulaComSeparador}">
-                    <TextBlock Text="" Style="{StaticResource TextBlockCabecalho}"/>
+                <Border Grid.Column="0" 
+                        Background="{StaticResource Cinza10}" 
+                        Padding="0"
+                        Margin="0">
+                    
+                    <StackPanel Orientation="Horizontal" 
+                                Spacing="2" 
+                                Margin="0"
+                                Padding="0"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center">
+                        
+                        <TextBlock Text="Ativo" 
+                                   Margin="0"
+                                   Padding="0"
+                                   FontWeight="SemiBold"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+
+                        <Button x:Name="btnOrdenarAtivo" 
+                                Height="28" 
+                                Width="28" 
+                                Visibility="Visible"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Padding="0" 
+                                Style="{StaticResource AlternateCloseButtonStyle}">
+                            <FontIcon Glyph="&#xE8CB;" FontSize="14"/>
+                        </Button>
+                    </StackPanel>
                 </Border>
 
-                <Border Grid.Column="2" Style="{StaticResource BorderCelulaComSeparador}">
-                    <TextBlock Text="Ativo" Style="{StaticResource TextBlockCabecalho}"/>
+                <Border Grid.Column="1" 
+                        Background="{StaticResource Cinza10}" 
+                        Padding="0"
+                        Margin="0">
+
+                    <StackPanel Orientation="Horizontal" 
+                                Spacing="4" 
+                                Margin="0"
+                                Padding="0"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="Forma de Pagamento" 
+                                   Margin="0"
+                                   Padding="0"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+
+                        <Button x:Name="btnOrdenarFormaPagamento" 
+                                Height="28" 
+                                Width="28" 
+                                Visibility="Visible"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Padding="0" 
+                                Style="{StaticResource AlternateCloseButtonStyle}">
+                            <FontIcon Glyph="&#xE8CB;" FontSize="14"/>
+                        </Button>
+                    </StackPanel>
                 </Border>
 
-                <Border Grid.Column="3" Style="{StaticResource BorderCelulaComSeparador}">
-                    <TextBlock Text="Forma de Pagamento" Style="{StaticResource TextBlockCabecalho}"/>
+                <Border Grid.Column="2" 
+                        Background="{StaticResource Cinza10}" 
+                        Padding="0"
+                        Margin="0">
+
+                    <StackPanel Orientation="Horizontal" 
+                                Spacing="4" 
+                                Margin="0"
+                                Padding="0"
+                                HorizontalAlignment="Center" 
+                                VerticalAlignment="Center">
+
+                        <TextBlock Text="Tipo Transação" 
+                                   Margin="0"
+                                   Padding="0"
+                                   TextAlignment="Center"
+                                   TextWrapping="WrapWholeWords"
+                                   VerticalAlignment="Center" 
+                                   HorizontalAlignment="Center"/>
+
+                        <Button x:Name="btnOrdenarTipoTransacao" 
+                                Height="28" 
+                                Width="28" 
+                                Visibility="Visible"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Padding="0" 
+                                Style="{StaticResource AlternateCloseButtonStyle}">
+                            <FontIcon Glyph="&#xE8CB;" FontSize="14"/>
+                        </Button>
+                    </StackPanel>
                 </Border>
 
-                <Border Grid.Column="4" Style="{StaticResource BorderCelulaComSeparador}">
-                    <TextBlock Text="Tipo de Transação" Style="{StaticResource TextBlockCabecalho}"/>
-                </Border>
-
-                <Border Grid.Column="5" Style="{StaticResource BorderCelulaComSeparador}">
-                    <TextBlock Text="" Style="{StaticResource TextBlockCabecalho}"/>
+                <Border Grid.Column="3" 
+                        Background="{StaticResource Cinza10}" 
+                        Padding="0"
+                        Margin="0">
                 </Border>
             </Grid>
 
             <!-- Linhas -->
-            <ListView x:Name="lstPrincipal" Grid.Row="1" Style="{StaticResource ListViewDataGrid}" SelectionChanged="lstPrincipal_SelectionChanged">
+            <ListView x:Name="lstPrincipal" Grid.Row="1" 
+                      Background="{StaticResource Cinza9}" 
+                      ItemContainerStyle="{StaticResource CompactListViewItemStyle}"
+                      SelectionChanged="lstPrincipal_SelectionChanged">
 
-                <ListView.ItemTemplate>
+                
+                <ListView.ItemTemplate >
                     <DataTemplate >
-                        <Grid Style="{StaticResource GridLinha}">
+                        <Grid Margin="0" ColumnSpacing="2">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="0"/>
-                                <ColumnDefinition Width="12"/>
-                                <ColumnDefinition Width="48"/>
+                                <ColumnDefinition Width="90" MinWidth="90"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="160"/>
+                                <ColumnDefinition Width="140" MinWidth="140"/>
                                 <ColumnDefinition Width="48"/>
                             </Grid.ColumnDefinitions>
 
-                            <Border Grid.Column="0" Style="{StaticResource BorderCelulaComSeparador}">
-                                <TextBlock Text="{Binding PK_FormaPagamento}" Style="{StaticResource TextBlockDadoCentralizado}"/>
+                            <Border Grid.Column="0" >
+                                <TextBlock Text="{Binding PK_FormaPagamento}"/>
                             </Border>
 
-                            <Border Grid.Column="2" Style="{StaticResource BorderCelulaComSeparador}">
-                                <TextBlock Text="{Binding Ativo}" Style="{StaticResource TextBlockDadoLinha}" Foreground="{Binding AtivoCor}"/>
+                            <Border Grid.Column="1" BorderBrush="{StaticResource Cinza9}" BorderThickness="1">
+                                <TextBlock Text="{Binding Ativo}" 
+                                           Foreground="{Binding AtivoCor}"
+                                           HorizontalAlignment="Center"
+                                           VerticalAlignment="Center"
+                                           FontSize="14"/>
                             </Border>
 
-                            <Border Grid.Column="3" Style="{StaticResource BorderCelulaComSeparador}">
-                                <TextBlock Text="{Binding FormaPagamento}" Style="{StaticResource TextBlockDadoCentralizado}"/>
+                            <Border Grid.Column="2" BorderBrush="{StaticResource Cinza9}" BorderThickness="1">
+                                <TextBlock Text="{Binding FormaPagamento}" FontSize="14" Foreground="{StaticResource Cinza2}" Padding="12,0,0,0" VerticalAlignment="Center"/>
                             </Border>
 
-                            <Border Grid.Column="4" Style="{StaticResource BorderCelulaComSeparador}">
-                                <TextBlock Text="{Binding TipoTransacao}" Style="{StaticResource TextBlockDadoCentralizado}"/>
+                            <Border Grid.Column="3" BorderBrush="{StaticResource Cinza9}" BorderThickness="1">
+                                <TextBlock Text="{Binding TipoTransacao}" FontSize="14" Foreground="{StaticResource Cinza2}" Padding="12,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" />
                             </Border>
 
-                            <Border Grid.Column="5" Style="{StaticResource BorderCelulaComSeparador}">
-                                <FontIcon Glyph="{Binding TipoTransacaoIcone}" Foreground="{Binding TipoTransacaoCor}" Style="{StaticResource FontIconStatusFormaPagamento}"/>
+                            <Border Grid.Column="4" BorderBrush="{StaticResource Cinza9}" BorderThickness="1">
+                                <FontIcon FontSize="12" Glyph="{Binding TipoTransacaoIcone}" Foreground="{Binding TipoTransacaoCor}" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                             </Border>
                         </Grid>
                     </DataTemplate>
