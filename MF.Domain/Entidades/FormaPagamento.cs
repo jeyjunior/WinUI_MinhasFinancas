@@ -35,11 +35,10 @@ namespace MF.Domain.Entidades
     public class FormaPagamentoGrid
     {
         public int PK_FormaPagamento { get; set; }
-        public string Ativo { get; set; }
-        public SolidColorBrush AtivoCor { get; set; }
         public string FormaPagamento { get; set; }
         public string TipoTransacao { get; set; }
-        public string TipoTransacaoIcone { get; set; }
         public SolidColorBrush TipoTransacaoCor { get; set; }
+        public string AtivoIcone { get; set; }
+        public SolidColorBrush AtivoCor { get; set; }
     }
 }

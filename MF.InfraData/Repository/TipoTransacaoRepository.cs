@@ -41,7 +41,7 @@ namespace MF.InfraData.Repository
                 return eCor.Verde2.ObterCor();
 
             if (PK_TipoTransacao == 3)
-                return eCor.Laranja2.ObterCor();
+                return eCor.Laranja1.ObterCor();
 
             return eCor.Transparente.ObterCor();
         }

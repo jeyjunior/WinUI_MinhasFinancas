@@ -28,7 +28,7 @@
         <Frame Grid.Column="1" 
                Grid.Row="0"
                x:Name="MainFrame" 
-               Background="{StaticResource Cinza10}"/>
+               Background="{StaticResource Transparente}"/>
 
         <Grid Grid.Column="1"  
               x:Name="gNotificacao"

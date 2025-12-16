@@ -12,6 +12,7 @@ namespace MF.Domain.Interfaces.ViewModel
     {
         ObservableCollection<FormaPagamentoGrid> FormaPagamentoCollection { get; set; }
         int PK_FormaPagamentoSelecionada { get; set; }
+        string Titulo { get; }
         void CarregarColecoes();
     }
 }

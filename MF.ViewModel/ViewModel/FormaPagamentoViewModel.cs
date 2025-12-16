@@ -33,6 +33,9 @@ namespace MF.ViewModel.ViewModel
         public ObservableCollection<FormaPagamentoGrid> FormaPagamentoCollection { get; set; } = new ObservableCollection<FormaPagamentoGrid>();
         #endregion
 
+        #region Titulo
+        public string Titulo { get => $"Forma de pagamento ({FormaPagamentoCollection.Count.ToString("N0")})"; }
+        #endregion
         #region Item Selecionado
         private int _pk_FormaPagamentoSelecionada;
         public int PK_FormaPagamentoSelecionada { get => _pk_FormaPagamentoSelecionada; set { _pk_FormaPagamentoSelecionada = value; PropriedadeAlterada(nameof(HabilitarBotaoEditarExcluir)); } }
@@ -67,21 +70,23 @@ namespace MF.ViewModel.ViewModel
 
             foreach (FormaPagamento item in ret)
             {
+                Icone ativo = IconeGlyph.ObterPadraoIcone_Ativo(item.Ativo);
+
                 var formaPagamentoGrid = new FormaPagamentoGrid
                 {
                     PK_FormaPagamento = item.PK_FormaPagamento,
-                    Ativo = item.Ativo ? "Sim" : "Não",
-                    AtivoCor = item.Ativo ? eCor.Verde2.ObterCor() : eCor.Laranja4.ObterCor(),
                     FormaPagamento = item.Nome,
                     TipoTransacao = _tipoTransacaoRepository.ObterCodigoTipoTransacao(item.FK_TipoTransacao),
                     TipoTransacaoCor = _tipoTransacaoRepository.ObterPadraoCorTipoTransacao(item.FK_TipoTransacao),
-                    TipoTransacaoIcone = _tipoTransacaoRepository.ObterPadraoIconeTipoTransacao(item.FK_TipoTransacao),
+                    AtivoIcone = ativo.Codigo,
+                    AtivoCor = ativo.Cor
                 };
 
                 FormaPagamentoCollection.Add(formaPagamentoGrid);
             }
 
             PropriedadeAlterada(nameof(FormaPagamentoCollection));
+            PropriedadeAlterada(nameof(Titulo));
         }
 
         #endregion
