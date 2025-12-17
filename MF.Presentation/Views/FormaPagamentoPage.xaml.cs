@@ -1,5 +1,6 @@
 using MF.Domain.Entidades;
 using MF.Domain.Interfaces.ViewModel;
+using MF.Presentation.Mensagem;
 using MF.ViewModel;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.UI.Xaml;
@@ -16,7 +17,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-
+using JJ.Net.WinUI3_CrossData.Enumerador;
 
 namespace MF.Presentation.Views
 {
@@ -54,9 +55,18 @@ namespace MF.Presentation.Views
             }
         }
 
-        private void btnDeletar_Click(object sender, RoutedEventArgs e)
+        private async void btnDeletar_Click(object sender, RoutedEventArgs e)
         {
+            bool ret = await Mensagem.Mensagem.ExibirConfirmacaoAsync(this.XamlRoot, "Tem certeza que deseja excluir essa forma de pagamento?", "Excluir");
 
+            if (!ret)
+                return;
+            
+            ret = _formaPagamentoViewModel.DeletarFormaPagamentoSelecionada();
+            if (ret)
+            {
+                Notificacao.Exibir("Forma pagamento excluída com sucesso.", eNotificacao.Sucesso);
+            }
         }
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
@@ -64,14 +74,38 @@ namespace MF.Presentation.Views
 
         }
 
-        private void btnAdicionar_Click(object sender, RoutedEventArgs e)
+        private async void btnAdicionar_Click(object sender, RoutedEventArgs e)
         {
+            var dialog = new FormaPagamentoDialog();
 
+            dialog.XamlRoot = this.XamlRoot;
+
+            var result = await dialog.ShowAsync();
+
+            if (result == ContentDialogResult.Primary)
+            {
+                var novaFormaPagamento = dialog.ObjetoResultado;
+
+                // _formaPagamentoViewModel.Adicionar(novaFormaPagamento);
+
+                // Exemplo de feedback
+                // Notificacao.Exibir("Salvo com sucesso!", eNotificacao.Sucesso);
+            }
         }
 
         private void btnOrdenarFormaPagamento_Click(object sender, RoutedEventArgs e)
         {
+            _formaPagamentoViewModel.Ordenar("FormaPagamento");
+        }
 
+        private void btnOrdenarAtivo_Click(object sender, RoutedEventArgs e)
+        {
+            _formaPagamentoViewModel.Ordenar("Ativo");
+        }
+
+        private void btnOrdenarTipoTransacao_Click(object sender, RoutedEventArgs e)
+        {
+            _formaPagamentoViewModel.Ordenar("TipoTransacao");
         }
     }
 }

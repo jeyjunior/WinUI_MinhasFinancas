@@ -16,6 +16,7 @@
     <None Remove="Componentes\NotificacaoUserControl.xaml" />
     <None Remove="Styles\DataGridStyles.xaml" />
     <None Remove="Themes\Colors.xaml" />
+    <None Remove="Views\FormaPagamentoDialog.xaml" />
     <None Remove="Views\FormaPagamentoPage.xaml" />
   </ItemGroup>
 
@@ -56,6 +57,11 @@
 	  <Reference Include="JJ.Net.WinUI3_CrossData">
 		  <HintPath>..\MF.Domain\DLL\JJ.Net.WinUI3_CrossData.dll</HintPath>
 	  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\FormaPagamentoDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Componentes\NotificacaoUserControl.xaml">

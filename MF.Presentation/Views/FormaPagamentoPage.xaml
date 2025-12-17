@@ -62,7 +62,7 @@
                 <Border Grid.Column="0" Style="{StaticResource GridHeaderBorderStyle}">
                     <StackPanel Style="{StaticResource GridHeaderStackPanelStyle}">
                         <TextBlock Text="Ativo" Style="{StaticResource GridHeaderTextStyle}"/>
-                        <Button x:Name="btnOrdenarAtivo" Style="{StaticResource AlternateCloseButtonStyle}">
+                        <Button x:Name="btnOrdenarAtivo" Click="btnOrdenarAtivo_Click" Style="{StaticResource AlternateCloseButtonStyle}">
                             <FontIcon Glyph="&#xE8CB;" Style="{StaticResource GridHeaderIconStyle}"/>
                         </Button>
                     </StackPanel>
@@ -71,7 +71,7 @@
                 <Border Grid.Column="1" Style="{StaticResource GridHeaderBorderStyle}">
                     <StackPanel Style="{StaticResource GridHeaderStackPanelStyle}" HorizontalAlignment="Left" Padding="18,0,0,0">
                         <TextBlock Text="Forma de Pagamento" Style="{StaticResource GridHeaderTextStyle}" HorizontalAlignment="Left"/>
-                        <Button x:Name="btnOrdenarFormaPagamento" Style="{StaticResource AlternateCloseButtonStyle}">
+                        <Button x:Name="btnOrdenarFormaPagamento" Click="btnOrdenarFormaPagamento_Click" Style="{StaticResource AlternateCloseButtonStyle}">
                             <FontIcon Glyph="&#xE8CB;" Style="{StaticResource GridHeaderIconStyle}"/>
                         </Button>
                     </StackPanel>
@@ -80,7 +80,7 @@
                 <Border Grid.Column="2" Style="{StaticResource GridHeaderBorderStyle}">
                     <StackPanel Style="{StaticResource GridHeaderStackPanelStyle}">
                         <TextBlock Text="Tipo Transação" Style="{StaticResource GridHeaderTextStyle}" TextAlignment="Center" TextWrapping="WrapWholeWords"/>
-                        <Button x:Name="btnOrdenarTipoTransacao" Style="{StaticResource AlternateCloseButtonStyle}">
+                        <Button x:Name="btnOrdenarTipoTransacao" Click="btnOrdenarTipoTransacao_Click" Style="{StaticResource AlternateCloseButtonStyle}">
                             <FontIcon Glyph="&#xE8CB;" Style="{StaticResource GridHeaderIconStyle}"/>
                         </Button>
                     </StackPanel>

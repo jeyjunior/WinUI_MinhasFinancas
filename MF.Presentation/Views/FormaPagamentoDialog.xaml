@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentDialog
+    x:Class="MF.Presentation.Views.FormaPagamentoDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MF.Presentation.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Cadastro de Forma de Pagamento"
+    PrimaryButtonText="Salvar"
+    CloseButtonText="Cancelar"
+    DefaultButton="Primary">
+
+    <ContentDialog.Resources>
+    </ContentDialog.Resources>
+
+    <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*" RowSpacing="12">
+
+        <TextBox x:Name="txtNome" 
+                 Header="Nome da Forma de Pagamento" 
+                 PlaceholderText="Ex: Cartão de Crédito"
+                 Grid.Row="0"/>
+
+        <ComboBox x:Name="cmbTipoTransacao"
+                  Header="Tipo de Transação"
+                  HorizontalAlignment="Stretch"
+                  Grid.Row="1">
+            <ComboBoxItem Content="Débito" Tag="1"/>
+            <ComboBoxItem Content="Crédito" Tag="2"/>
+        </ComboBox>
+
+        <CheckBox x:Name="chkAtivo" 
+                  Content="Ativo" 
+                  IsChecked="True"
+                  Grid.Row="2"/>
+
+    </Grid>
+</ContentDialog>

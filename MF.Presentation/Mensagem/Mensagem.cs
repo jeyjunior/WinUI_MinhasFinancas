@@ -39,14 +39,14 @@ namespace MF.Presentation.Mensagem
 
             return mensagemResultado;
         }
-        public static async Task<bool> ExibirConfirmacaoAsync(this XamlRoot xamlRoot, string mensagem)
+        public static async Task<bool> ExibirConfirmacaoAsync(this XamlRoot xamlRoot, string mensagem, string titulo = "Confirmação", string btnPrimario = "Sim", string btnSecundario = "Não")
         {
             var contentDialog = new ContentDialog
             {
-                Title = "Confirmação",
+                Title = titulo,
                 Content = mensagem,
-                PrimaryButtonText = "Sim",
-                CloseButtonText = "Não",
+                PrimaryButtonText = btnPrimario,
+                CloseButtonText = btnSecundario,
                 XamlRoot = xamlRoot,
                 DefaultButton = ContentDialogButton.Primary
             };

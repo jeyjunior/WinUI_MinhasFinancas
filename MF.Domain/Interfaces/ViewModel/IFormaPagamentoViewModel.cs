@@ -14,5 +14,7 @@ namespace MF.Domain.Interfaces.ViewModel
         int PK_FormaPagamentoSelecionada { get; set; }
         string Titulo { get; }
         void CarregarColecoes();
+        bool DeletarFormaPagamentoSelecionada();
+        void Ordenar(string campo);
     }
 }

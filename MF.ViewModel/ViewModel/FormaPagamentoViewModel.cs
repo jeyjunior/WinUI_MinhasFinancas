@@ -36,6 +36,7 @@ namespace MF.ViewModel.ViewModel
         #region Titulo
         public string Titulo { get => $"Forma de pagamento ({FormaPagamentoCollection.Count.ToString("N0")})"; }
         #endregion
+
         #region Item Selecionado
         private int _pk_FormaPagamentoSelecionada;
         public int PK_FormaPagamentoSelecionada { get => _pk_FormaPagamentoSelecionada; set { _pk_FormaPagamentoSelecionada = value; PropriedadeAlterada(nameof(HabilitarBotaoEditarExcluir)); } }
@@ -48,10 +49,79 @@ namespace MF.ViewModel.ViewModel
         }
         #endregion
 
+        #region Controle de Ordenação
+        private string _ultimaColunaOrdenada = "";
+        private bool _ordenacaoAscendente = true;
+        #endregion
+
         #region Metodos Publicos
         public void CarregarColecoes()
         {
             CarregarFormaPagamentoCollection();
+        }
+
+        public bool DeletarFormaPagamentoSelecionada()
+        {
+            if (PK_FormaPagamentoSelecionada > 0)
+            {
+                var ret = _formaPagamentoRepository.Deletar(PK_FormaPagamentoSelecionada);
+
+                if (ret > 0)
+                {
+                    CarregarFormaPagamentoCollection();
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void Ordenar(string campo)
+        {
+            if (_ultimaColunaOrdenada == campo)
+            {
+                _ordenacaoAscendente = !_ordenacaoAscendente;
+            }
+            else
+            {
+                _ultimaColunaOrdenada = campo;
+                _ordenacaoAscendente = true;
+            }
+
+            var listaParaOrdenar = FormaPagamentoCollection.ToList();
+            IEnumerable<FormaPagamentoGrid> listaOrdenada = null;
+
+            switch (campo)
+            {
+                case "FormaPagamento":
+                    listaOrdenada = _ordenacaoAscendente
+                        ? listaParaOrdenar.OrderBy(x => x.FormaPagamento)
+                        : listaParaOrdenar.OrderByDescending(x => x.FormaPagamento);
+                    break;
+
+                case "TipoTransacao":
+                    listaOrdenada = _ordenacaoAscendente
+                        ? listaParaOrdenar.OrderBy(x => x.TipoTransacao)
+                        : listaParaOrdenar.OrderByDescending(x => x.TipoTransacao);
+                    break;
+
+                case "Ativo":
+                    listaOrdenada = _ordenacaoAscendente
+                        ? listaParaOrdenar.OrderBy(x => x.AtivoIcone)
+                        : listaParaOrdenar.OrderByDescending(x => x.AtivoIcone);
+                    break;
+
+                default:
+                    return;
+            }
+
+            if (listaOrdenada != null)
+            {
+                FormaPagamentoCollection.Clear();
+
+                foreach (var item in listaOrdenada)
+                    FormaPagamentoCollection.Add(item);
+            }
         }
         #endregion
 
@@ -64,7 +134,10 @@ namespace MF.ViewModel.ViewModel
             if (FormaPagamentoCollection.Any())
                 FormaPagamentoCollection.Clear();
 
-            var ret = _formaPagamentoRepository.ObterLista().ToList();
+            var ret = _formaPagamentoRepository.ObterLista()
+                .OrderBy(i => i.Nome)
+                .ThenBy(i => i.FK_TipoTransacao)
+                .ToList();
 
             TipoTransacao tipoTransacao = null;
 
@@ -88,7 +161,6 @@ namespace MF.ViewModel.ViewModel
             PropriedadeAlterada(nameof(FormaPagamentoCollection));
             PropriedadeAlterada(nameof(Titulo));
         }
-
         #endregion
     }
 }

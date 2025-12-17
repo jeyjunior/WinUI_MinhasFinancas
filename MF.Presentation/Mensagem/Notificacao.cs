@@ -19,7 +19,7 @@ namespace MF.Presentation.Mensagem
             _container = container;
         }
 
-        public static void Exibir(NotificacaoRequest request)
+        public static void Exibir(string mensagem, eNotificacao tipoNotificacao)
         {
             try
             {
@@ -27,7 +27,7 @@ namespace MF.Presentation.Mensagem
                     return;
 
                 var notificacao = new NotificacaoUserControl();
-                notificacao.DefinirTipoNotificacao(request.Mensagem, request.TipoNotificacao);
+                notificacao.DefinirTipoNotificacao(mensagem, tipoNotificacao);
 
                 AdicionarNotificacao(notificacao);
             }
@@ -84,11 +84,5 @@ namespace MF.Presentation.Mensagem
                 _container.Children.Remove(notificacaoMaisAntiga);
             }
         }
-    }
-
-    public class NotificacaoRequest
-    {
-        public string Mensagem { get; set; }
-        public eNotificacao TipoNotificacao { get; set; }
     }
 }
